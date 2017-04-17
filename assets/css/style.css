@@ -1,0 +1,12 @@
+.triviaQuestion {
+	background-color: lightblue;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.trivia-choices {
+	background-color: lightgrey;
+	margin: 5px 0px 5px 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border: 2px solid black;
+}
