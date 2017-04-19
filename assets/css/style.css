@@ -1,12 +1,17 @@
-.triviaQuestion {
-	background-color: lightblue;
-	padding-left: 0px;
-	padding-right: 0px;
+.trivia-question {
+	border: 2px red solid;
+	height: 500px;
 }
-.trivia-choices {
-	background-color: lightgrey;
-	margin: 5px 0px 5px 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-	border: 2px solid black;
+.timer {
+	color: red;
+	font-size: 30px;
+	font-weight: 700;
+}
+.show-timer {
+	height: 70px;
+	margin-top: 30px;
+}
+.choices {
+	background-color: blue;
+	margin: 5px;
 }

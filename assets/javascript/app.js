@@ -1,33 +1,156 @@
-var owTrivia = {
-	q1 : 
+var time = 30;
+var roundTimer;
+var questionIndex = 0;
+var score = 0;
+var triviaArr = [
 	{
-		question: 'What hero can heal themselves?',
-		choices: ['Zennyata', 'Soldier: 76', 'Hanzo', 'D.Va'],
-		answer: 'Solider: 76'
+		question: 'q1',
+		answer: 'a1',
+		choices: ['a1','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q2',
+		answer: 'a2',
+		choices: ['a2','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q3',
+		answer: 'a3',
+		choices: ['a3','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q4',
+		answer: 'a4',
+		choices: ['a4','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q5',
+		answer: 'a5',
+		choices: ['a5','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q6',
+		answer: 'a6',
+		choices: ['a6','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q7',
+		answer: 'a7',
+		choices: ['a7','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q8',
+		answer: 'a8',
+		choices: ['a8','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q9',
+		answer: 'a9',
+		choices: ['a9','c2','c3','c4'],
+		bg: 'img.png'
+	}, {
+		question: 'q10',
+		answer: 'a10',
+		choices: ['a10','c2','c3','c4'],
+		bg: 'img.png'
+	}, 
+];
+
+//Fisher-Yates/Don Knuth shuffle algorithm
+Array.prototype.shuffle = function(){
+	var input = this;
+	for(var i = input.length -1;i>=0;i--){
+		var randomIndex = Math.floor(Math.random()*(i+1));
+		var itemAtIndex = input[randomIndex];
+		input[randomIndex] = input[i];
+		input[i] = itemAtIndex;
 	}
-	q2 : 
-	{
-		question: 'What hero does not have different damage values?',
-		choices: ['Ana', 'Soldier: 76', 'Pharah', 'McCree'],
-		answer: 'Solider: 76'
+	return input;
+};
+
+//Shuffle questions & choices
+function shuffleChoices () {
+	for(i=0;i<triviaArr.length;i++){
+		triviaArr[i].choices.shuffle();
 	}
-}
-function makeQuestion () {
-	var makeTriviaQuestion = $('<div class="col-lg-12 triviaQuestion text-center">' + owTrivia.q1.question +'</div>');
-	$('.trivia-question').append(makeTriviaQuestion);
-	for (i=0; i<owTrivia.q1.choices.length; i++) {
-		var makeTriviaChoices = $('<div class="col-lg-12 trivia-choices text-center">');
-		makeTriviaChoices.html(owTrivia.q1.choices[i])
-		$('.triviaQuestion').append(makeTriviaChoices);
-		$('.trivia-choices').on('click', function() {
-			if('click' == owTrivia.q1.answer ) {
-				console.log('You are correct! The answer is : ' + owTrivia.q1.answer)
-			}
-		})
+};
+// triviaArr.shuffle();
+// shuffleChoices();
+
+//timer
+function timer () {
+	roundTimer = setInterval(decrement, 1000)
+};
+function decrement() {
+	time--;
+	$(".show-timer").html('<span class="timer">Time left: ' + time + ' seconds!</span>');
+	if (time === 0) {
+		stop();
+		console.log("Time Up!");
 	}
+};
+function stop() {
+	clearInterval(roundTimer);
+};
+// timer();
+
+//reset
+function reset() {
+	time = 30;
+	score = 0;
+	triviaArr.shuffle();
+	shuffleChoices();
+	stop();
+	timer();
+};
+
+//clear appends
+function clearAppends() {
+	$('.choices').remove();
+	$('.question').remove();
 }
 
-function timer () {
-	var roundTimer = setInterval()
+//append question
+function appendQuestion (){
+	var question = $('<div class="col-lg-12 question">');
+	question.text('Question: ' + triviaArr[questionIndex].question);
+	$('.trivia-question').append(question);
+};
+
+//append choices
+function appendChoices(){
+	for(i=0;i<triviaArr[questionIndex].choices.length;i++) {
+		var choices = $('<div class="col-lg-12 choices">');
+		choices.html(triviaArr[questionIndex].choices[i]);
+		$('.question').append(choices);
+	};
+	$('.choices').on('click',function() {
+		var currentGuess = $(this);
+		guessChecker(currentGuess);
+		});
+};
+
+//guess/time checker
+function guessChecker(currentGuess){
+	if(triviaArr[questionIndex].answer == currentGuess.html()) {
+		console.log('correct answer');
+		questionIndex ++;
+		clearAppends();
+		appendQuestion();
+		appendChoices();
+	} else {
+		questionIndex ++;
+		clearAppends();
+		appendQuestion();
+		appendChoices();
+	}
+};
+
+function startGame(){
+	reset();
+	appendQuestion();
+	appendChoices();
 }
-makeQuestion();
+startGame();
+
+
