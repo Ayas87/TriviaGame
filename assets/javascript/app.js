@@ -53,7 +53,7 @@ var triviaArr = [
 		answer: 'a10',
 		choices: ['a10','c2','c3','c4'],
 		bg: 'img.png'
-	}, 
+	},
 ];
 
 //Fisher-Yates/Don Knuth shuffle algorithm
@@ -155,5 +155,3 @@ function startGame(){
 	nextQuestion();
 }
 startGame();
-
-
