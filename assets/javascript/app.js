@@ -87,6 +87,7 @@ function decrement() {
 	if (time === 0) {
 		stop();
 		console.log("Time Up!");
+
 	}
 };
 function stop() {
@@ -109,6 +110,13 @@ function clearAppends() {
 	$('.choices').remove();
 	$('.question').remove();
 }
+
+function nextQuestion(){
+	clearAppends();
+	appendQuestion();
+	appendChoices();
+	time = 30;
+};
 
 //append question
 function appendQuestion (){
@@ -135,21 +143,16 @@ function guessChecker(currentGuess){
 	if(triviaArr[questionIndex].answer == currentGuess.html()) {
 		console.log('correct answer');
 		questionIndex ++;
-		clearAppends();
-		appendQuestion();
-		appendChoices();
+		nextQuestion();
 	} else {
 		questionIndex ++;
-		clearAppends();
-		appendQuestion();
-		appendChoices();
+		nextQuestion();
 	}
 };
 
 function startGame(){
 	reset();
-	appendQuestion();
-	appendChoices();
+	nextQuestion();
 }
 startGame();
 
