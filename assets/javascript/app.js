@@ -129,7 +129,7 @@ function nextQuestion(){
 function appendQuestion (){
 	var question = $('<div class="col-lg-12 question">');
 	question.text('Question: ' + triviaArr[questionIndex].question);
-	$('.trivia-question').append(question);
+	$('.trivia-question').prepend(question);
 };
 
 //append choices
@@ -137,7 +137,7 @@ function appendChoices(){
 	for(i=0;i<triviaArr[questionIndex].choices.length;i++) {
 		var choices = $('<div class="col-lg-12 choices">');
 		choices.html(triviaArr[questionIndex].choices[i]);
-		$('.question').append(choices);
+		$('.trivia-question').append(choices);
 	};
 	$('.choices').on('click',function() {
 		var currentGuess = $(this);
