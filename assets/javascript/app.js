@@ -6,54 +6,54 @@ var questionIndex = 0;
 var score = 0;
 var triviaArr = [
 	{
-		question: 'q1',
-		answer: 'a1',
-		choices: ['a1','c2','c3','c4'],
+		question: 'What dog was bred to hunt badgers?',
+		answer: 'Dachshunds',
+		choices: ['Dachshunds','Afghan Hound','German Pinscher','German Shepherd Dog'],
 		bg: 'img.png'
 	}, {
-		question: 'q2',
-		answer: 'a2',
-		choices: ['a2','c2','c3','c4'],
+		question: 'What dog hunts lions?',
+		answer: 'Rhodesian Ridgeback',
+		choices: ['Rhodesian Ridgeback','Mastiff','Maltese','French Bulldog'],
 		bg: 'img.png'
 	}, {
-		question: 'q3',
-		answer: 'a3',
-		choices: ['a3','c2','c3','c4'],
+		question: 'What dog was not bred to heard cattle?',
+		answer: 'Pitbull',
+		choices: ['Pitbull','Australian Shepherd','Welsh Corgi','Bearded Collie'],
 		bg: 'img.png'
 	}, {
-		question: 'q4',
-		answer: 'a4',
-		choices: ['a4','c2','c3','c4'],
+		question: 'Which dog was a popular courier during World War I?',
+		answer: 'Airedale Terrier',
+		choices: ['Airedale Terrier','German Shepherd','Chihuahua','American Bandogge'],
 		bg: 'img.png'
 	}, {
-		question: 'q5',
-		answer: 'a5',
-		choices: ['a5','c2','c3','c4'],
+		question: 'How many teeth does an average adult dog have?',
+		answer: '42',
+		choices: ['42','32','18','26'],
 		bg: 'img.png'
 	}, {
-		question: 'q6',
-		answer: 'a6',
-		choices: ['a6','c2','c3','c4'],
+		question: 'What is the tallest dog breed?',
+		answer: 'Irish Wolfhound',
+		choices: ['Irish Wolfhound','Great Dane','Mastiff','Bernese Mountain Dog'],
 		bg: 'img.png'
 	}, {
-		question: 'q7',
-		answer: 'a7',
-		choices: ['a7','c2','c3','c4'],
+		question: 'What color are dogs not able to see?',
+		answer: 'Red',
+		choices: ['Red','Green','Blue','Yellow'],
 		bg: 'img.png'
 	}, {
-		question: 'q8',
-		answer: 'a8',
-		choices: ['a8','c2','c3','c4'],
+		question: 'What is the heaviest breed of dog?',
+		answer: 'Mastiff',
+		choices: ['Mastiff','Irish Wolfhound','Great Dane','Bernese Mountain Dog'],
 		bg: 'img.png'
 	}, {
-		question: 'q9',
-		answer: 'a9',
-		choices: ['a9','c2','c3','c4'],
+		question: 'Bansenji is the only dog breed that can not ____?',
+		answer: 'Bark',
+		choices: ['Bark','Smell','Sit','Walk Backwards'],
 		bg: 'img.png'
 	}, {
-		question: 'q10',
-		answer: 'a10',
-		choices: ['a10','c2','c3','c4'],
+		question: 'What breed is most cat-like?',
+		answer: 'Shiba Inu',
+		choices: ['Shiba Inu','Welsh Corgi','Poodle','Alaskan Malamute'],
 		bg: 'img.png'
 	},
 ];
@@ -166,9 +166,9 @@ function transition(outcome){
 	clearAppends();
 	if(questionIndex == triviaArr.length - 1) {
 		stop();
-		console.log('You answered ' + score + ' questions correctly!');
-		console.log('You had  ' + (triviaArr.length - timeoutCounter - score) + ' incorrect answers!');
-		console.log('You did not answer ' + timeoutCounter + ' questions!');
+		$('.trivia-question').append('You answered ' + score + ' questions correctly!<br>');
+		$('.trivia-question').append('You had  ' + (triviaArr.length - timeoutCounter - score) + ' incorrect answers!<br>');
+		$('.trivia-question').append('You did not answer ' + timeoutCounter + ' questions!');
 	} else {
 		transtionTimer();
 		$('.trivia-bottom').html(outcome);

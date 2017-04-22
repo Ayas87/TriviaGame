@@ -8,16 +8,16 @@
 
 .question {
 	font-size: 30px;
-	color: rgb(128, 128, 128);
-	background-color: rgba(149, 163, 160, 0.5);
-	height: auto;
+	color: white;
+	background-color: rgb(40, 40, 45);
+	/*height: auto;*/
 	padding: 30px;
 	font-weight: 700;
 }
 
 .show-timer {
 	padding: 20px;
-	background-color: rgb(121, 101, 108);
+	background-color: rgb(164, 181, 151);
 }
 
 .timer {
@@ -29,7 +29,7 @@
 .choices {
 	background-color: rgb(24, 127, 142);
 	box-shadow: 2px 2px 0px rgba(24, 127, 142, 0.3);
-	margin: 5px 0px;
+	margin: 7px 0px;
 	padding: 10px;
 	color: white;
 	position: relative;
@@ -46,6 +46,7 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 60px;
-	background-color: rgb(201, 199, 233);
+	padding: 60px;
+	color: white;
+	background-color: rgb(40, 40, 45);
 }
