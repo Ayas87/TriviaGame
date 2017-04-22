@@ -1,4 +1,4 @@
-var time = 30;
+var time;
 var roundTimer;
 var transitionTimeOut;
 var timeoutCounter = 0;
@@ -89,10 +89,9 @@ function decrement() {
 	time--;
 	$(".show-timer").html('<span class="timer">Time left: ' + time + ' seconds!</span>');
 	if (time === 0) {
-		stop();
 		timeoutCounter ++;
-		console.log("Time Up!");
-
+		transition("Time Up! The correct answer is: " + triviaArr[questionIndex].answer);
+		stop();
 	}
 };
 function stop() {
@@ -101,7 +100,7 @@ function stop() {
 
 //reset
 function reset() {
-	time = 30;
+	time = 10;
 	score = 0;
 	timeoutCounter = 0;
 	triviaArr.shuffle();
@@ -119,10 +118,12 @@ function clearAppends() {
 
 //resets to next question
 function nextQuestion(){
+	stop();
+	timer();
 	clearAppends();
 	appendQuestion();
 	appendChoices();
-	time = 30;
+	time = 10;
 };
 
 //append question
@@ -149,6 +150,7 @@ function appendChoices(){
 function guessChecker(currentGuess){
 	if(triviaArr[questionIndex].answer == currentGuess.html()) {
 		console.log('correct answer');
+		score ++;
 		transition('You are correct! The answer is: ' + triviaArr[questionIndex].answer);
 	} else {
 		transition('Sorry! That is not the correct answer.. The correct answer is: ' + triviaArr[questionIndex].answer);
@@ -156,16 +158,20 @@ function guessChecker(currentGuess){
 };
 
 function transtionTimer (){
-	var transitionTimeOut = setTimeout(nextQuestion,3000)
+	var transitionTimeOut = setTimeout(nextQuestion,1000)
 };
 
 function transition(outcome){
-	transtionTimer();
+
 	clearAppends();
-	$('.trivia-bottom').html(outcome);
-	if(questionIndex == triviaArr.length) {
+	if(questionIndex == triviaArr.length - 1) {
+		stop();
 		console.log('You answered ' + score + ' questions correctly!');
+		console.log('You had  ' + (triviaArr.length - timeoutCounter - score) + ' incorrect answers!');
+		console.log('You did not answer ' + timeoutCounter + ' questions!');
 	} else {
+		transtionTimer();
+		$('.trivia-bottom').html(outcome);
 		questionIndex ++;
 	}
 };
