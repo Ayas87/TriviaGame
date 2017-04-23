@@ -7,8 +7,8 @@ var score = 0;
 var triviaArr = [
 	{
 		question: 'What dog was bred to hunt badgers?',
-		answer: 'Dachshunds',
-		choices: ['Dachshunds','Afghan Hound','German Pinscher','German Shepherd Dog'],
+		answer: 'Dachshund',
+		choices: ['Dachshund','Afghan Hound','German Pinscher','German Shepherd Dog'],
 		bg: 'img.png'
 	}, {
 		question: 'What dog hunts lions?',
@@ -103,10 +103,13 @@ function reset() {
 	time = 10;
 	score = 0;
 	timeoutCounter = 0;
+	questionIndex = 0;
 	triviaArr.shuffle();
 	shuffleChoices();
 	stop();
 	timer();
+	$('.trivia-question').empty();
+
 };
 
 //clear appends
@@ -123,6 +126,7 @@ function nextQuestion(){
 	clearAppends();
 	appendQuestion();
 	appendChoices();
+	$('.trivia-bottom').empty();
 	time = 10;
 };
 
@@ -166,9 +170,11 @@ function transition(outcome){
 	clearAppends();
 	if(questionIndex == triviaArr.length - 1) {
 		stop();
+		$('.show-timer').empty();
 		$('.trivia-question').append('You answered ' + score + ' questions correctly!<br>');
 		$('.trivia-question').append('You had  ' + (triviaArr.length - timeoutCounter - score) + ' incorrect answers!<br>');
 		$('.trivia-question').append('You did not answer ' + timeoutCounter + ' questions!');
+		restartBtn();
 	} else {
 		transtionTimer();
 		$('.trivia-bottom').html(outcome);
@@ -179,5 +185,13 @@ function transition(outcome){
 function startGame(){
 	reset();
 	nextQuestion();
+}
+
+function restartBtn() {
+	var restartBtn = $('<button class="btn-primary">');
+	restartBtn.text("Play Again!").on('click', function(){
+		startGame();
+	})
+	$('.show-timer').append(restartBtn);
 }
 startGame();

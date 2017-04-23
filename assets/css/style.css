@@ -1,23 +1,29 @@
+.trivia-game {
+	background-color: rgb(201, 199, 233);
+}
+
 .trivia-question {
 	/*border: 2px red solid;*/
-	height: 500px;
-	position: relative;
-	background-color: rgb(201, 199, 233);
+/*	height: 500px;
+*/	position: relative;
 	font-family: sans-serif;
+	height: 350px;
 }
 
 .question {
 	font-size: 30px;
 	color: white;
-	background-color: rgb(40, 40, 45);
 	/*height: auto;*/
 	padding: 30px;
 	font-weight: 700;
+	background-color: rgb(40, 40, 45);
+
 }
 
 .show-timer {
-	padding: 20px;
+	padding: 20px 0px;
 	background-color: rgb(164, 181, 151);
+	margin-bottom: 20px;
 }
 
 .timer {
@@ -29,12 +35,13 @@
 .choices {
 	background-color: rgb(24, 127, 142);
 	box-shadow: 2px 2px 0px rgba(24, 127, 142, 0.3);
-	margin: 7px 0px;
+	margin: 10px 0px;
 	padding: 10px;
 	color: white;
 	position: relative;
 	top: 0px;
 	left: 0px;
+	height: 13%;
 }
 
 .choices:hover {
@@ -43,10 +50,10 @@
 }
 
 .trivia-bottom {
-	position: absolute;
-	bottom: 0;
+
 	width: 100%;
-	padding: 60px;
+	padding: 30px 0px;
+	height: 60px;
 	color: white;
 	background-color: rgb(40, 40, 45);
 }
